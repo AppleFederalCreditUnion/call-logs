@@ -36,6 +36,13 @@ paths:
            
         default:
           description: Error
+  /CallLogs:
+    post:
+      summary: post new call data to database
+        requestBody:
+          $ref: '#components/requestBodies/callInfo'
+    
+    
 components:
   schemas:
     CallLog:
@@ -43,3 +50,11 @@ components:
       properties:
         id:
           type: integer
+  requestBodies:
+    callInfo:
+      required: true
+      content:
+        application/form:
+          properties:
+      
+  
