@@ -1,0 +1,45 @@
+openapi: 3.0.0
+info:
+  version: '1.0'
+  title: CallLog API
+  description: CallLog API to monitor member activities
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/AppleFCU-Dev/CallLog/1.0
+paths:
+  /CallLogs/{memberNumber}:
+    get:
+      tags:
+        - Accounts
+      description: Used to retrieve the call logs for member.
+      operationId: GetCallLogs
+      parameters:
+        - name: memberNumber
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            maxLength: 10
+            pattern: '^[0-9-]{1,10}$'
+            example: 289242
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CallLog'
+              example:
+           
+        default:
+          description: Error
+components:
+  schemas:
+    CallLog:
+      type: object
+      properties:
+        id:
+          type: integer
